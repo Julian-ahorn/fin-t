@@ -25,8 +25,9 @@ jobs:
           version: 11
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          # 注意：不要使用 cache: pnpm（新版 pnpm 与 setup-node 缓存逻辑不兼容，会导致此步骤失败）
+          # pnpm 11 需要 Node.js >= 22.13（使用 node:sqlite 内置模块），不能用 20
+          node-version: 22
+          # 注意：不要使用 cache: pnpm（新版 pnpm 与 setup-node 缓存逻辑不兼容，会导致该步骤失败）
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
