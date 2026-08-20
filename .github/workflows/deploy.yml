@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+          # 注意：不要使用 cache: pnpm（新版 pnpm 与 setup-node 缓存逻辑不兼容，会导致此步骤失败）
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
